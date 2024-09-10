@@ -27,7 +27,7 @@ if [[ -z "$HOSTNAME" || -z "$USERNAME" ]]; then
 fi
 
 # Check SSH connection and run whoami
-output=$(ssh -i /usr/lib64/nagios/.ssh/id_rsa -o "StrictHostKeyChecking no" "$HOSTNAME" "whoami" 2>/dev/null)
+output=$(ssh -i /usr/lib64/nagios/.ssh/id_rsa -o "StrictHostKeyChecking no" "$USERNAME""@""$HOSTNAME" "whoami" 2>/dev/null)
 
 # Check if the SSH connection was successful and whoami output is "$USERNAME"
 if [ $? -eq 0 ] && [ "$output" = "$USERNAME" ]; then
